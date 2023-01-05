@@ -1,10 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Hello, World!</title>
+    <title>MS-Rewards</title>
+    <link rel="stylesheet" href="main.css" />
   </head>
   <body>
-    <h1>Hello, World!</h1>
-    <script src="popup.js"></script>
+    <div id="app">
+      <h1 class="title">Today's Bing task is active!</h1>
+      <div>Go to bing and search!</div>
+      <div class="times">
+        <div class="sub">-</div>
+        <div class="search-time"></div>
+        <div class="add">+</div>
+      </div>
+      <div class="btn-wrapper">
+        <div class="button search-btn">Begin to search</div>
+      </div>
+    </div>
+    <script src="popup.js" type="module"></script>
   </body>
 </html>
