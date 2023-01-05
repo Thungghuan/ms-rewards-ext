@@ -6,14 +6,36 @@ function getRandom() {
   return Math.floor(Math.random() * 99) + 1
 }
 
-if (true) {
-  chrome.action.setIcon({ path: '../assets/huan128.png' })
-} else {
-  chrome.action.setIcon({ path: '../assets/huan_badge.png' })
+async function setBadge() {
+  const today = new Date()
+  const storage = await chrome.storage.local.get(['lastFinishDate'])
+
+  let lastFinishDate = storage.lastFinishDate
+
+  let first = false
+  if (lastFinishDate === undefined) {
+    lastFinishDate = today.toLocaleDateString()
+    first = true
+  }
+
+  if (first || today.toLocaleDateString() !== lastFinishDate) {
+    chrome.action.setIcon({ path: '../assets/rewards_badge.png' })
+  } else {
+    chrome.action.setIcon({ path: '../assets/rewards128.png' })
+  }
 }
+
+setBadge()
 
 chrome.runtime.onMessage.addListener(async (request) => {
   if (request.msg === 'ms-rewards-begin-search') {
+    const today = new Date()
+    await chrome.storage.local.set({
+      lastFinishDate: today.toLocaleDateString()
+    })
+
+    await setBadge()
+
     if (
       /^https?:\/\/(?:[^./?#]+\.)?bing\.com\/search/.test(request.currentUrl)
     ) {
@@ -32,4 +54,8 @@ chrome.runtime.onMessage.addListener(async (request) => {
   } else {
     console.log(request)
   }
+})
+
+chrome.runtime.onInstalled.addListener(async () => {
+  await chrome.storage.local.clear()
 })

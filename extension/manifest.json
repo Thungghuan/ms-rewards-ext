@@ -9,8 +9,8 @@
     "action": {
         "default_popup": "popup/index.html",
         "default_icon": {
-            "16": "assets/huan16.png",
-            "32": "assets/huan32.png"
+            "16": "assets/rewards16.png",
+            "32": "assets/rewards32.png"
         }
     },
     "permissions": [
@@ -18,10 +18,10 @@
         "storage"
     ],
     "icons": {
-        "16": "assets/huan16.png",
-        "32": "assets/huan32.png",
-        "48": "assets/huan48.png",
-        "128": "assets/huan128.png"
+        "16": "assets/rewards16.png",
+        "32": "assets/rewards32.png",
+        "48": "assets/rewards48.png",
+        "128": "assets/rewards128.png"
     },
     "content_scripts": [
         {
