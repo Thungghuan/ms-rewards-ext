@@ -46,10 +46,12 @@
 
 .btn-wrapper {
   margin: 1em auto;
+  display: flex;
   user-select: none;
 }
 
 .button {
+  margin: 0 0.4em;
   padding: 0.8em;
   cursor: pointer;
   background-color: #14b8a6;

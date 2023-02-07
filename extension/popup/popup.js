@@ -42,3 +42,9 @@ searchTimeInput.addEventListener('change', async (e) => {
   searchTime = e.target.value
   await chrome.storage.local.set({ searchTime })
 })
+
+const dashboardBtn = document.querySelector('.dashboard-btn')
+dashboardBtn.addEventListener('click', async () => {
+  const url = `https://rewards.bing.com/`
+  await chrome.tabs.create({ url })
+})
