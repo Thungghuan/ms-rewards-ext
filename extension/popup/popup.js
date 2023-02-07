@@ -33,12 +33,13 @@ addSearchTime.addEventListener('click', async () => {
   await chrome.storage.local.set({ searchTime })
 })
 subSearchTime.addEventListener('click', async () => {
-  if (searchTime > 0) searchTime--
+  if (searchTime > 1) searchTime--
   searchTimeInput.value = searchTime
   await chrome.storage.local.set({ searchTime })
 })
 searchTimeInput.addEventListener('change', async (e) => {
-  searchTime = e.target.value
+  searchTime = e.target.value || 1
+  searchTimeInput.value = searchTime
   await chrome.storage.local.set({ searchTime })
 })
 

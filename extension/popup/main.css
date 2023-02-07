@@ -10,6 +10,11 @@
   color: #1d4ed8;
 }
 
+.hint {
+  margin: 0 auto 1em;
+  font-size: 1rem;
+}
+
 .times {
   margin: 0.3em;
   display: flex;
@@ -42,6 +47,10 @@
   outline: none;
   border-top: solid 1px #d4d4d4;
   border-bottom: solid 1px #d4d4d4;
+}
+
+.times-text {
+  margin: 0 0.4rem;
 }
 
 .btn-wrapper {
