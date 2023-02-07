@@ -1,5 +1,4 @@
 const searchBtn = document.querySelector('.search-btn')
-// const searchTime = +document.querySelector('.search-time').textContent
 
 async function getCurrentTab() {
   const queryOptions = { active: true, lastFocusedWindow: true }
@@ -26,15 +25,20 @@ if (!searchTime) {
 
 const addSearchTime = document.querySelector('.add')
 const subSearchTime = document.querySelector('.sub')
-document.querySelector('.search-time').textContent = searchTime
+const searchTimeInput = document.querySelector('.search-time')
+searchTimeInput.value = searchTime
 
 addSearchTime.addEventListener('click', async () => {
   searchTime++
-  document.querySelector('.search-time').textContent = searchTime
+  searchTimeInput.value = searchTime
   await chrome.storage.local.set({ searchTime })
 })
 subSearchTime.addEventListener('click', async () => {
   if (searchTime > 0) searchTime--
-  document.querySelector('.search-time').textContent = searchTime
+  searchTimeInput.value = searchTime
+  await chrome.storage.local.set({ searchTime })
+})
+searchTimeInput.addEventListener('change', async (e) => {
+  searchTime = e.target.value
   await chrome.storage.local.set({ searchTime })
 })

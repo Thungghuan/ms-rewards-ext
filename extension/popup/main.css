@@ -35,9 +35,13 @@
 }
 .search-time {
   padding: 0.6rem;
+  width: 30px;
+  font-size: 1em;
+  text-align: center;
+  border: none;
+  outline: none;
   border-top: solid 1px #d4d4d4;
   border-bottom: solid 1px #d4d4d4;
-  user-select: none;
 }
 
 .btn-wrapper {
