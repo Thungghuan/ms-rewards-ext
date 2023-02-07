@@ -12,8 +12,7 @@ searchBtn.addEventListener('click', async () => {
   chrome.runtime.sendMessage({
     msg: 'ms-rewards-begin-search',
     searchTime,
-    currentUrl: currentTab.url,
-    tabId: currentTab.id
+    currentUrl: currentTab.url
   })
 })
 

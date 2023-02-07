@@ -26,8 +26,8 @@
     "content_scripts": [
         {
             "matches": [
-                "http://*/*",
-                "https://*/*"
+                "http://*.bing.com/search?*",
+                "https://*.bing.com/search?*"
             ],
             "js": [
                 "./contentScripts/index.js"

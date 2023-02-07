@@ -36,11 +36,15 @@ chrome.runtime.onMessage.addListener(async (request) => {
 
     await setBadge()
 
+    const queryOptions = { active: true }
+    const [tab] = await chrome.tabs.query(queryOptions)
+    const tabId = tab.id
+
     if (
       /^https?:\/\/(?:[^./?#]+\.)?bing\.com\/search/.test(request.currentUrl)
     ) {
       for (let i = 0; i < request.searchTime; ++i) {
-        chrome.tabs.sendMessage(request.tabId, {
+        chrome.tabs.sendMessage(tabId, {
           msg: 'ms-rewards-search-once',
           keyword: getRandom()
         })
@@ -48,7 +52,7 @@ chrome.runtime.onMessage.addListener(async (request) => {
       }
     } else {
       const keyword = 1
-      const url = `https://www.bing.com/search?q=${keyword}&ms_rewards=true`
+      const url = `https://www.bing.com/search?q=${keyword}&ms_rewards_newtab=true`
       const tab = await chrome.tabs.create({ url })
     }
   } else {
